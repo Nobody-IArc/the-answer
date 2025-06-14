@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import descriptions from '../lib/description';
+import './globals.css';
+import MatrixRain42 from '../components/floating.number';
 
 export default function Home() {
     const [count, setCount] = useState(0);
@@ -20,18 +22,21 @@ export default function Home() {
 
     return (
         <main
-            className={`
+            className={`relative
     min-h-screen flex flex-col items-center justify-center transition-all duration-300
     ${isAnswer ? 'invert-theme flicker shake-screen text-red-400 bg-transparent' : ''}
   `}
         >
+
+            {isAnswer && <MatrixRain42 />}
+
 
 
         <h1 className={`text-6xl font-bold ${isAnswer ? 'glitch scale-125' : ''}`}>
                 {count}
             </h1>
 
-            <p className={`text-2xl mb-10 text-center max-w-md transition-all duration-300 ${isAnswer ? 'glitch' : ''}`}>
+            <p className={`text-2xl mt-20   mb-10 text-center max-w-md transition-all duration-300 ${isAnswer ? 'glitch' : ''}`}>
                 {description}
             </p>
 

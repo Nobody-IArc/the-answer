@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
 @keyframes glitch {
   0% { transform: translate(0); }
@@ -15,11 +13,11 @@
 @keyframes flicker {
   0%, 19.999%, 22%, 62.999%, 64%, 100% {
     opacity: 1;
-    background-color: white;
+    background: white;
   }
   20%, 21.999%, 63%, 63.999% {
     opacity: 0.3;
-    background-color: black;
+    background: blue;
   }
 }
 
@@ -45,4 +43,29 @@
 
 .invert-theme {
   filter: invert(1) hue-rotate(180deg);
+}
+
+@keyframes matrixRain {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(120vh);
+    opacity: 0;
+  }
+}
+
+.matrix-char {
+  animation: matrixRain linear infinite;
+  font-size: 2rem;
+  color: #ff1a1a; /* 진한 빨강 */
+  text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+  pointer-events: none;
+  user-select: none;
+  position: absolute;
+  top: 0;
 }
