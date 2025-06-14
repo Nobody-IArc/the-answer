@@ -1,26 +1,48 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@keyframes glitch {
+  0% { transform: translate(0); }
+  10% { transform: translate(-2px, 2px); }
+  20% { transform: translate(2px, -1px); }
+  30% { transform: translate(-1px, -1px); }
+  40% { transform: translate(1px, 2px); }
+  50% { transform: translate(0); }
+  100% { transform: translate(0); }
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes flicker {
+  0%, 19.999%, 22%, 62.999%, 64%, 100% {
+    opacity: 1;
+    background-color: white;
+  }
+  20%, 21.999%, 63%, 63.999% {
+    opacity: 0.3;
+    background-color: black;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes shake-screen {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(2px, -2px); }
+  50% { transform: translate(-3px, 3px); }
+  75% { transform: translate(2px, 2px); }
+  100% { transform: translate(0, 0); }
+}
+
+.glitch {
+  animation: glitch 100ms infinite;
+}
+
+.flicker {
+  animation: flicker 1.5s infinite;
+}
+
+.shake-screen {
+  animation: shake-screen 0.4s infinite;
+}
+
+.invert-theme {
+  filter: invert(1) hue-rotate(180deg);
 }
